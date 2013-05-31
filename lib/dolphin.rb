@@ -411,13 +411,13 @@ module Dolphin
     desc "go", "normal deploy procedure"
     def go
       # update code
-      invoke "git:update"
+      invoke "dolphin:git:update"
 
       # no need to invoke since it is within the same class
       bundle
 
       # restart app server
-      invoke "puma:restart"
+      invoke "dolphin:puma:restart"
     end
 
     desc "try", "normal deploy procedure"
