@@ -3,6 +3,12 @@
 .bundle
 .config
 .yardoc
+
+# ctags file
+tags
+.tags
+.tags_sorted_by_file
+
 Gemfile.lock
 InstalledFiles
 _yardoc
