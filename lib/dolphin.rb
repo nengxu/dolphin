@@ -199,8 +199,10 @@ module Dolphin
       menu = [
         "
           # install chruby
-          cd chruby-0.3.4/
-          sudo make PREFIX=\"/usr\" install
+          wget -O chruby-0.3.5.tar.gz https://github.com/postmodern/chruby/archive/v0.3.5.tar.gz
+          tar -xzvf chruby-0.3.5.tar.gz
+          cd chruby-0.3.5/
+          sudo make install
         ",
       ]
 
