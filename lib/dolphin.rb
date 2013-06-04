@@ -263,7 +263,7 @@ module Dolphin
       menu = [
         "
           # install bundler
-          gem install bundler
+          sudo gem install bundler
         ",
       ]
 
