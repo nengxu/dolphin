@@ -398,12 +398,12 @@ module Dolphin
   # Deploy
   # =============================================================================
   class Deploy < Base
-    desc "bundle", "bundle install"
+    desc "bundle", "sudo bundle install"
     def bundle
       menu = [
         "
           cd #{@deploy_dir}
-          bundle install --quiet
+          sudo bundle install --quiet
         ",
       ]
 
