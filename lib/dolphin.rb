@@ -147,15 +147,17 @@ module Dolphin
     def chruby
       menu = [
         "
-          # install chruby
-          wget -O chruby-0.3.5.tar.gz https://github.com/postmodern/chruby/archive/v0.3.5.tar.gz
-          tar -xzvf chruby-0.3.5.tar.gz
-          cd chruby-0.3.5/
+          # git clone
+          if [ ! -d 'chruby' ]; then git clone https://github.com/postmodern/chruby.git ; fi
+          # checkout tag
+          cd chruby
+          git checkout v0.3.5
+          # install
           sudo make install
         ",
       ]
 
-      execute menu
+      run menu
     end
 
     desc "repo", "repository set up."
@@ -173,7 +175,7 @@ module Dolphin
         ",
       ]
 
-      execute menu
+      run menu
     end
 
     desc "ruby", "install ruby, arg: version"
@@ -191,7 +193,7 @@ module Dolphin
         ",
       ]
 
-      execute menu
+      run menu
     end
 
     desc "select", "select ruby, arg: version"
@@ -204,7 +206,7 @@ module Dolphin
         ",
       ]
 
-      execute menu
+      run menu
     end
 
     desc "bundler", "install bundler"
