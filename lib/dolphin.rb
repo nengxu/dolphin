@@ -33,25 +33,21 @@ module Dolphin
 
     end
 
-    def parse_commands(menu, join=false)
+    def parse_commands(menu)
       # Helper method to parse a list of text menu of possible commands,
       # which may contain empty lines or commented out with #
-      # commands from one menu item will be joined into one command
+      # commands can be separated into groups
 
       commands = []
-      menu.each do |item|
+      menu.each do |group|
         buffer = []
-        item.split(/\r?\n/).each do |line|
+        group.split(/\r?\n/).each do |line|
           line = line.strip
           unless line.empty? or line.start_with?('#') # empty or commented out
             buffer << line
           end
         end
-        if join
-          commands << buffer.join('; ')
-        else
-          commands.push(*buffer)
-        end
+        commands.push(*buffer)
       end
       commands
     end
