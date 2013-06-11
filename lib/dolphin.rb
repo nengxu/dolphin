@@ -127,7 +127,7 @@ module Dolphin
       # record output to display at the end
       output = {}
 
-      Parallel.map(@servers, in_threads: 3) do |server|
+      Parallel.map(@servers, in_threads: tracks) do |server|
         session = ssh_connection(server)
         output[server] = [] # output from this server
 
