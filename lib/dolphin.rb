@@ -60,7 +60,7 @@ module Dolphin
       end
     end
 
-    def run(menu)
+    def execute(menu)
       # execute commands defined in menu
       commands = parse_commands(menu)
       puts "#{'*'*10}Executing commands#{'*'*10}\n"
@@ -69,7 +69,7 @@ module Dolphin
       end
       puts "#{'='*60}\n"
 
-      # use Parallel to run commands on multiple servers in parallel
+      # use Parallel to execute commands on multiple servers in parallel
       tracks = @servers.size
       # 3 threads maximum
       tracks = 3 if tracks > 3
@@ -157,7 +157,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "repo", "repository set up."
@@ -175,7 +175,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "ruby", "install ruby, arg: version"
@@ -193,7 +193,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "select", "select ruby, arg: version"
@@ -206,7 +206,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "bundler", "install bundler"
@@ -218,7 +218,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "rvm", "remove rvm"
@@ -230,7 +230,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "apache", "remove apache"
@@ -243,7 +243,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "git", "install latest git"
@@ -269,7 +269,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
   end
@@ -293,7 +293,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "conf", "config nginx"
@@ -304,7 +304,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "start", "start nginx"
@@ -316,7 +316,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "stop", "stop nginx"
@@ -328,7 +328,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "restart", "restart nginx"
@@ -340,7 +340,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
   end
@@ -358,7 +358,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "go", "normal deploy procedure"
@@ -383,7 +383,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
   end
@@ -406,7 +406,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
   end
@@ -424,7 +424,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "stop", "stop puma"
@@ -436,7 +436,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
     desc "restart", "restart puma"
@@ -449,7 +449,7 @@ module Dolphin
         ",
       ]
 
-      run menu
+      execute menu
     end
 
   end
