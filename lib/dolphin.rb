@@ -64,53 +64,6 @@ module Dolphin
       end
     end
 
-    def ssh_exec(command, &block)
-      status = nil
-      output = ''
-
-      channel = ssh_connection.open_channel do |chan|
-        chan.exec(command) do |ch, success|
-          puts "#{'!'*10} command failed: #{command}" unless success
-          # ch.request_pty
-
-          ch.on_data do |c, data|
-            output << data
-            yield(c, :stdout, data)
-          end
-
-          ch.on_extended_data do |c, type, data|
-            output << data
-            yield(c, :stderr, data)
-          end
-
-          ch.on_request "exit-status" do |c, data|
-            status = data.read_long
-          end
-        end
-      end
-
-      channel.wait
-      [status, output]
-    end
-
-    def execute(menu)
-      # execute commands defined in menu
-      commands = parse_commands(menu, true)
-
-      puts "Executing on [#{@host}]"
-      commands.each do |command|
-        puts "\n#{'='*60}\n#{command}\n...... =>\n\n"
-
-        status, output = ssh_exec command do |ch, stream, data|
-          case stream
-          when :stdout then $stdout.print data
-          when :stderr then $stderr.print data
-          end
-          ch.send_data(askpass) if data =~ /^sudo password: /
-        end
-      end
-    end
-
     def run(menu)
       # execute commands defined in menu
       commands = parse_commands(menu)
