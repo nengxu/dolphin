@@ -1,5 +1,6 @@
 require_relative "dolphin/version"
 require_relative "dolphin/base"
+require_relative "dolphin/lock"
 
 module Dolphin
 
@@ -327,6 +328,7 @@ module Dolphin
     register(Puma, 'puma', 'puma', 'Puma related commands')
     register(Nginx, 'nginx', 'nginx', 'Nginx related commands')
     register(Git, 'git', 'git', 'Git related commands')
+    register(Lock, 'lock', 'lock', 'Lock resource to avoid simultaneous deployments')
   end
 
 end
