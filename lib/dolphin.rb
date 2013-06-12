@@ -60,6 +60,28 @@ module Dolphin
       end
     end
 
+    def capture(command, server)
+      output = ''
+      session = ssh_connection(server)
+
+      channel = session.open_channel do |chan|
+        chan.exec(command) do |ch, success|
+
+          ch.on_data do |c, data|
+            output << data
+          end
+
+          ch.on_extended_data do |c, type, data|
+            output << data
+          end
+
+        end
+      end
+
+      channel.wait
+      output
+    end
+
     def execute(menu)
       # execute commands defined in menu
       commands = parse_commands(menu)
