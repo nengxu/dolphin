@@ -16,15 +16,8 @@ class Dolphin::Lock < Dolphin::Base
   desc "create", "Create lock"
   def create
     lock_message = "Deploy started at #{@deploy_date} in progress\n"
-    menu = [
-      "
-        cd #{@app_dir}
-        echo '#{lock_message}' > #{@lock_file}
-        cat #{@lock_file}
-      ",
-    ]
-
-    execute menu, @lead_server
+    command = "echo '#{lock_message}' > #{@lock_file}"
+    puts capture(command, @lead_server)
   end
 
   desc "release", "Release lock"
