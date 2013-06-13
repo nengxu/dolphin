@@ -58,6 +58,7 @@ class Dolphin::Base < Thor
   end
 
   def capture(command, server)
+    # capture output from one target server
     output = ''
     session = ssh_connection(server)
 
@@ -79,8 +80,8 @@ class Dolphin::Base < Thor
     output
   end
 
-  def execute(menu)
-    # execute commands defined in menu
+  def execute(menu, target_server=nil)
+    # execute commands defined in menu, when :target_server is passed in, only execute on this server
     commands = parse_commands(menu)
     puts "#{'*'*10}Executing commands#{'*'*10}\n"
     commands.each do |command|
@@ -88,14 +89,21 @@ class Dolphin::Base < Thor
     end
     puts "#{'='*60}\n"
 
-    # use Parallel to execute commands on multiple servers in parallel
-    tracks = @servers.size
-    # 3 threads maximum
-    tracks = 3 if tracks > 3
+    if target_server # solo
+      tracks = 1
+      target = [target_server]
+    else
+      # use Parallel to execute commands on multiple servers in parallel
+      tracks = @servers.size
+      # 3 threads maximum
+      tracks = 3 if tracks > 3
+      target = @servers
+    end
+
     # record output to display at the end
     output = {}
 
-    Parallel.map(@servers, in_threads: tracks) do |server|
+    Parallel.map(target, in_threads: tracks) do |server|
       session = ssh_connection(server)
       output[server] = [] # output from this server
 
