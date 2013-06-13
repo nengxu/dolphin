@@ -21,13 +21,13 @@ Or install it yourself as:
 TODO: Write usage instructions here
 
 ## Related gems
-Capistrano: https://github.com/capistrano/capistrano.git
-Chruby: https://github.com/postmodern/chruby.git
-Git-deploy: https://github.com/mislav/git-deploy.git
-Hell: https://github.com/seatgeek/hell.git
-Mina: https://github.com/nadarei/mina.git
-Moonshine: https://github.com/railsmachine/moonshine.git
-Strano: https://github.com/joelmoss/strano.git
+* [capistrano]
+* [chruby]
+* [git-deploy]
+* [hell]
+* [mina]
+* [moonshine]
+* [strano]
 
 ## Contributing
 
