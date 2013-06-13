@@ -228,6 +228,11 @@ module Dolphin
 
     desc "go", "normal deploy procedure"
     def go
+      # check lock
+      invoke "dolphin:lock:check"
+      # put lock
+      invoke "dolphin:lock:create"
+
       # update code
       invoke "dolphin:git:update"
 
@@ -236,6 +241,9 @@ module Dolphin
 
       # restart app server
       invoke "dolphin:puma:restart"
+
+      # remove lock
+      invoke "dolphin:lock:release"
     end
 
     desc "try", "normal deploy procedure"
