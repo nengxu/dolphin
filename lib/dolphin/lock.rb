@@ -26,4 +26,10 @@ class Dolphin::Lock < Dolphin::Base
     execute menu, @lead_server
   end
 
+  desc "release", "Release lock"
+  def release
+    command = "rm -f #{@lock_file}"
+    puts capture(command, @lead_server)
+  end
+
 end
