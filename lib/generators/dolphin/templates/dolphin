@@ -51,12 +51,20 @@ class Dolphin::Base
 
     case @env
     when 'qa'
+      @servers = [
+        'qa01.best_app.com',
+        'qa02.best_app.com',
+      ]
     when 'production'
-    else # @env == 'alpha'
-      # list of servers for this environment
       @servers = [
         'prod01.best_app.com',
         'prod02.best_app.com',
+      ]
+    else # @env == 'alpha'
+      # list of servers for this environment
+      @servers = [
+        'dev01.best_app.com',
+        'dev02.best_app.com',
       ]
       # customized branch, default is the same as @env
       @branch = 'master'
