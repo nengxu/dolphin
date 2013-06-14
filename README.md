@@ -70,7 +70,7 @@ Show subcommands under one module:
 
     $ bin/dolphin deploy
     $ bin/dolphin git
-    $ bin/dolphin loc
+    $ bin/dolphin lock
     $ bin/dolphin nginx
     $ bin/dolphin puma
     $ bin/dolphin setup
