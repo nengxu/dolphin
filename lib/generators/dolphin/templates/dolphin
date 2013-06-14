@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+require "dolphin"
+
+class Dolphin::Base
+
+  private
+
+  # deployment environments
+  def env
+    # ===================================
+    # common options for all environments
+    # ===================================
+
+    # settings require user input
+    # -----------------------------
+    # name of this application
+    @application = 'best_app'
+    # on server, the user account for deploying
+    @user = 'deploy'
+    # location of git repository
+    @github = "git@github.com:nengxu/dolphin.git"
+    # which ruby, for chruby
+    @ruby_version = 'ruby-2.0.0-p195'
+
+    # settings with default values
+    # -----------------------------
+    # on servers, the directory where Rails applications reside
+    @app_dir = '/rails'
+    # on servers under @app_dir, the directory where this application resides
+    @deploy_dir = "#{@app_dir}/#{@application}"
+    # puma related settings
+    @sockets = "#{@deploy_dir}/tmp/sockets"
+    @pids = "#{@deploy_dir}/tmp/pids"
+
+    # internal variables, no need to change by user
+    # -----------------------------
+    # ssh sessions
+    @sessions = {}
+
+    # ===================================
+    # environment specific options
+    # ===================================
+
+    # when deploy, need to specify the environment by using "-e env_name"
+    # for example: bin/dolphin deploy go -e alpha
+
+    # @env is the environment as specified
+    # @branch is the git branch for this environment
+    # by default @branch is the same as @env
+    @env = @branch =options[:env]
+
+    case @env
+    when 'qa'
+    when 'production'
+    else # @env == 'alpha'
+      # list of servers for this environment
+      @servers = [
+        'prod01.best_app.com',
+        'prod02.best_app.com',
+      ]
+      # customized branch, default is the same as @env
+      @branch = 'master'
+    end
+
+    # ===================================
+    # settings to avoid simultaneous deployments
+    # ===================================
+
+    # current deployment will abort when another deployment is still in progress
+
+    # lead server for lock status
+    @lead_server = @servers[0]
+    # name and location of the lock file
+    @lock_file = "#{@deploy_dir}/tmp/pids/dolphin.lock"
+    # format of date/time for lock file
+    @deploy_date = Time.now.strftime("%m%d%H%M")
+    # custom content for the lock file
+    @lock_message = "Deploy started at #{@deploy_date} in progress\n"
+
+  end
+end
+
+# start the CLI
+Dolphin::CLI.start
