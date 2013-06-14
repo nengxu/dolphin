@@ -6,11 +6,11 @@ require 'dolphin/version'
 Gem::Specification.new do |spec|
   spec.name          = "dolphin"
   spec.version       = Dolphin::VERSION
-  spec.authors       = ["Neng Xu\n"]
+  spec.authors       = ["Neng Xu"]
   spec.email         = ["neng2.xu2@gmail.com"]
   spec.description   = %q{Dolphin: deploy smartly}
   spec.summary       = %q{Dolphin: deploy smartly}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/nengxu/dolphin"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
