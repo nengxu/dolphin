@@ -5,31 +5,9 @@ require_relative "dolphin/deploy"
 require_relative "dolphin/setup"
 require_relative "dolphin/nginx"
 require_relative "dolphin/puma"
+require_relative "dolphin/git"
 
 module Dolphin
-
-  # =============================================================================
-  # Git
-  # =============================================================================
-  class Git < Base
-    desc "update", "Update code from github and keep local changes"
-    def update
-      menu = [
-        "
-          cd #{@deploy_dir}
-          git fetch
-          git stash
-          git checkout #{@branch}
-          git rebase origin/#{@branch}
-          git stash apply
-          git stash clear
-        ",
-      ]
-
-      execute menu
-    end
-
-  end
 
   # =============================================================================
   # CLI
