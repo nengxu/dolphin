@@ -79,6 +79,43 @@ Execute a subcommand, for example, normal deployment:
 
     $ bin/dolphin deploy go -e production
 
+## Extend with custom modules
+
+To extend dolphin's functionality with your custom modules is easy. It is Ruby anyway. For example, to add Centos related functions:
+    # bin/dolphin
+    # adjust Centos config
+    class Dolphin::Centos < Dolphin::Base
+      desc "git", "install latest git"
+      def git
+        menu = [
+          "
+            # install rpmforge
+            wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+            wget http://apt.sw.be/RPM-GPG-KEY.dag.txt
+            sudo rpm --import RPM-GPG-KEY.dag.txt
+            sudo rpm -K rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+            sudo rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
+            sudo cp ~/rpmforge.repo /etc/yum.repos.d/
+
+            # list repos
+            # yum repolist
+
+            # install git
+            sudo yum -y remove git
+            sudo yum clean all
+            sudo yum -y update
+            sudo yum -y install git
+          ",
+        ]
+
+        execute menu
+      end
+    end
+
+    class Dolphin::CLI < Thor
+      register(Dolphin::Centos, 'centos', 'centos', 'Adjust Centos config')
+    end
+
 ## Related gems
 
 * [capistrano]
