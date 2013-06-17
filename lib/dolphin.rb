@@ -2,143 +2,9 @@ require_relative "dolphin/version"
 require_relative "dolphin/base"
 require_relative "dolphin/lock"
 require_relative "dolphin/deploy"
+require_relative "dolphin/setup"
 
 module Dolphin
-
-  # =============================================================================
-  # Setup
-  # =============================================================================
-  class Setup < Base
-    desc "chruby", "install chruby"
-    def chruby
-      menu = [
-        "
-          # git clone
-          if [ ! -d 'chruby' ]; then git clone https://github.com/postmodern/chruby.git ; fi
-          # checkout tag
-          cd chruby
-          git checkout v0.3.5
-          # install
-          sudo make install
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "repo", "repository set up."
-    def repo
-      menu = [
-        "
-          # init git repository
-          cd #{@app_dir}
-          git clone #{@github}
-        ",
-        "
-          # set up tracking branch
-          cd #{@deploy_dir}
-          git checkout -b #{@branch} origin/#{@branch}
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "ruby", "install ruby, arg: version"
-    def ruby(version="2.0.0-p195")
-      menu = [
-        "
-          # update ruby-build
-          cd ruby-build
-          git pull
-          sudo ./install.sh
-        ",
-        "
-          # install ruby
-          sudo ruby-build #{version} /opt/rubies/ruby-#{version}
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "select", "select ruby, arg: version"
-    def select(version="2.0.0-p195")
-      menu = [
-        "
-          # select ruby
-          cd #{@app_dir}
-          echo ruby-#{version} > .ruby-version
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "bundler", "install bundler"
-    def bundler
-      menu = [
-        "
-          # install bundler
-          sudo gem install bundler
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "rvm", "remove rvm"
-    def rvm
-      menu = [
-        "
-          sudo yum -y remove move-rvm
-          sudo rm -rf /usr/local/rvm
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "apache", "remove apache"
-    def apache
-      menu = [
-        "
-          sudo chkconfig httpd.newhomesapi off
-          sudo chkconfig httpd.newhomesrdc off
-          sudo yum -y remove httpd
-        ",
-      ]
-
-      execute menu
-    end
-
-    desc "git", "install latest git"
-    def git
-      menu = [
-        "
-          # install rpmforge
-          wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-          wget http://apt.sw.be/RPM-GPG-KEY.dag.txt
-          sudo rpm --import RPM-GPG-KEY.dag.txt
-          sudo rpm -K rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-          sudo rpm -ivh rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
-          sudo cp ~/rpmforge.repo /etc/yum.repos.d/
-
-          # list repos
-          # yum repolist
-
-          # install git
-          sudo yum -y remove git
-          sudo yum clean all
-          sudo yum -y update
-          sudo yum -y install git
-        ",
-      ]
-
-      execute menu
-    end
-
-  end
 
   # =============================================================================
   # Nginx
@@ -281,8 +147,8 @@ module Dolphin
   # CLI
   # =============================================================================
   class CLI < Thor
-    register(Setup, 'setup', 'setup', 'set up target server')
-    register(Deploy, 'deploy', 'deploy', 'deploy to target server')
+    register(Setup, 'setup', 'setup', 'Set up target servers')
+    register(Deploy, 'deploy', 'deploy', 'Deploy to target server')
     register(Puma, 'puma', 'puma', 'Puma related commands')
     register(Nginx, 'nginx', 'nginx', 'Nginx related commands')
     register(Git, 'git', 'git', 'Git related commands')
