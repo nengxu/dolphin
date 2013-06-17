@@ -82,6 +82,7 @@ Execute a subcommand, for example, normal deployment:
 ## Extend with custom modules
 
 To extend dolphin's functionality with your custom modules is easy. It is Ruby anyway. For example, to add Centos related functions:
+
     # bin/dolphin
     # adjust Centos config
     class Dolphin::Centos < Dolphin::Base
