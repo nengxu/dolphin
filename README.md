@@ -1,6 +1,19 @@
 # Dolphin
 
-TODO: Write a gem description
+Dolphin: deploy agilely like dolphins can swim. A multi-threaded multi-stage deployment tool utilizes the full power of Git and Ruby.
+
+* Bye bye, serial iteration over list of servers;
+  Welcome multi-threaded deployment using Parallel gem.
+* Bye bye, afterthought of the multistage extension;
+  Welcome, multi-stage deployment built in from inception.
+* Bye bye, SVN style checkout directories on servers;
+  Welcome, git repository on servers.
+* Bye bye, Capistrano style symlink tricks for current / rollback;
+  Welcome, git checkout.
+* Bye bye, Rake tasks;
+  Welcome, Thor actions.
+* Bye bye, complexity;
+  Welcome, nimbleness.
 
 ## Installation
 
