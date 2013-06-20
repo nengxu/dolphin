@@ -13,18 +13,22 @@ Gem::Specification.new do |spec|
 
   spec.description   = %q{Dolphin: deploy agilely like dolphins can swim. A multi-threaded multi-stage deployment tool utilizes the full power of Git and Ruby.}
   spec.summary       = %q{Dolphin: deploy agilely like dolphins can swim. A multi-threaded multi-stage deployment tool utilizes the full power of Git and Ruby.
-    Bye bye, serial iteration over list of servers;
-    Welcome, multi-threaded deployment using Parallel gem.
-    Bye bye, afterthought of the multistage extension;
-    Welcome, multi-stage deployment built in from inception.
-    Bye bye, SVN style checkout directories on servers;
-    Welcome, git repository on servers.
-    Bye bye, Capistrano style symlink tricks for current / rollback;
-    Welcome, git checkout.
-    Bye bye, Rake tasks;
-    Welcome, Thor actions.
-    Bye bye, complexity;
-    Welcome, nimbleness.
+    * Bye bye, serial iteration over list of servers;
+    * Welcome, multi-threaded deployment using Parallel gem.
+    * Bye bye, afterthought of the multistage extension;
+    * Welcome, multi-stage deployment built in from inception.
+    * Bye bye, SVN style checkout directories on servers;
+    * Welcome, git repository on servers.
+    * Bye bye, Capistrano style symlink tricks for current / rollback;
+    * Welcome, git checkout.
+    * Bye bye, Rake tasks;
+    * Welcome, Thor actions.
+    * Bye bye, RVM;
+    * Welcome, Chruby.
+    * Bye bye, gemset;
+    * Welcome, system wide gems.
+    * Bye bye, complexity;
+    * Welcome, nimbleness.
   }
 
   spec.files         = `git ls-files`.split($/)

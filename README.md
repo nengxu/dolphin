@@ -12,6 +12,10 @@ Dolphin: deploy agilely like dolphins can swim. A multi-threaded multi-stage dep
 * Welcome, git checkout.
 * Bye bye, Rake tasks;
 * Welcome, Thor actions.
+* Bye bye, RVM;
+* Welcome, Chruby.
+* Bye bye, gemset;
+* Welcome, system wide gems.
 * Bye bye, complexity;
 * Welcome, nimbleness.
 
