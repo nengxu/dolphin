@@ -73,6 +73,8 @@ Edit the bin/dolphin script generated as above to adjust settings. Please refer 
 
 ## Usage
 
+### Help
+
 Show top level command modules:
 
     $ bin/dolphin
@@ -86,9 +88,25 @@ Show subcommands under one module:
     $ bin/dolphin puma
     $ bin/dolphin setup
 
-Execute a subcommand, for example, normal deployment:
+### Execute a command
+
+Generally run a command in this format
+
+    $ bin/dolphin module command argument1 argument2 -e option1 -o option2
+
+For example, normal deployment to production:
 
     $ bin/dolphin deploy go -e production
+
+Rollback to previous release in qa environment:
+
+    $ bin/dolphin deploy rollback -e qa
+
+Switch to a specific tag / branch / commit in alpha environment:
+
+    $ bin/dolphin deploy rollback 96820cf
+
+Please note that the default environment is alpha for developers. So there is no need to append "-e alpha" in the above example.
 
 ## Extend with custom modules
 
