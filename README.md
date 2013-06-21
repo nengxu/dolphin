@@ -75,11 +75,11 @@ Edit the bin/dolphin script generated as above to adjust settings. Please refer 
 
 ### Help
 
-Show top level command modules:
+Show top level modules:
 
     $ bin/dolphin
 
-Show subcommands under one module:
+Show tasks under one module:
 
     $ bin/dolphin deploy
     $ bin/dolphin git
@@ -88,11 +88,11 @@ Show subcommands under one module:
     $ bin/dolphin puma
     $ bin/dolphin setup
 
-### Execute a command
+### Execute a task
 
-Generally run a command in this format
+Generally run a task in this format
 
-    $ bin/dolphin module command argument1 argument2 -e option1 -o option2
+    $ bin/dolphin module task argument1 argument2 -e option1 -o option2
 
 For example, normal deployment to production:
 
