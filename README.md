@@ -90,7 +90,14 @@ Show tasks under one module:
 
 ### Execute a task
 
-Generally run a task in this format
+Each task may involve running groups of commands on the servers. So the hierarchy is like:
+
+    Module (eg., deploy / setup)
+      Task (eg., go / rollback)
+        Group (eg., check lock / update code / restart app)
+          Commands (eg., git fetch / git rebase)
+
+Generally run a task in this format:
 
     $ bin/dolphin module task argument1 argument2 -e option1 -o option2
 
