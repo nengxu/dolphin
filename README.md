@@ -19,21 +19,15 @@ Dolphin: deploy agilely like dolphins can swim. A multi-threaded multi-stage dep
 * Bye bye, complexity;
 * Welcome, nimbleness.
 
-## Installation
+## Installation / Rails generator
 
 Add this line to your application's Gemfile:
 
     gem 'dolphin'
 
-And then execute:
-
-    $ bundle
-
 Or install it yourself as:
 
     $ gem install dolphin
-
-## Rails generator
 
 Run generator from your Rails application:
 
