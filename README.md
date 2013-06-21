@@ -115,6 +115,69 @@ Switch to a specific tag / branch / commit in alpha environment:
 
 Please note that the default environment is alpha for developers. So there is no need to append "-e alpha" in the above example.
 
+### Output
+
+The outputs from servers are captured and show on your console as in the following sections.
+
+#### Commands section
+In this section, the list of commands from the current group is printed. For example:
+
+    $ bin/dolphin deploy try
+    **********Executing commands**********
+    cd /rails/best_app
+    pwd
+    bundle check
+    ============================================================
+
+#### Capture section
+
+In this section, the outputs from the servers are captured in realtime as they are generated. The outputs are classied in 3 types: output / error / exit. The general format of the captured output is:
+
+    server.name => [type]: result from server
+
+Because Dolphin is running tasks on servers in multi-threaded mode, outputs from all servers are mingled together like in random order. For example:
+
+    dev01.best_app.com => [output]: /rails/best_app
+    dev02.best_app.com => [output]: /rails/best_app
+    dev02.best_app.com => [output]: The Gemfile's dependencies are satisfied
+    dev02.best_app.com => [exit]: 0
+    dev01.best_app.com => [output]: The Gemfile's dependencies are satisfied
+    dev01.best_app.com => [exit]: 0
+
+Caveat! Some server applications may label their output differently than expected. So if you see some output labelled with [error], don't assume there are errors or the commands failed. For example, Git may produce such:
+
+    dev02.best_app.com => [error]: Note: checking out '96820cffcec43499acfc737bade544aa011f5376'.
+
+    You are in 'detached HEAD' state. You can look around, make experimental
+    changes and commit them, and you can discard any commits you make in this
+    state without impacting any branches by performing another checkout.
+
+    If you want to create a new branch to retain commits you create, you may
+    do so (now or later) by using -b with the checkout command again. Example:
+
+      git checkout -b new_branch_name
+
+    dev02.best_app.com => [error]: HEAD is now at 96820cf... Return format from gem changed.
+    dev02.best_app.com => [exit]: 0
+
+#### Review section
+
+In this section, the outputs from current command group are printed out again. However, outputs from the same server are grouped together. So you can review the results server by server.
+
+    **********Results Review**********
+
+    ============================================================
+    Executing on [dev01.best_app.com] =>
+    [output]: /rails/best_app
+    [output]: The Gemfile's dependencies are satisfied
+    [exit]: 0
+
+    ============================================================
+    Executing on [dev02.best_app.com] =>
+    [output]: /rails/best_app
+    [output]: The Gemfile's dependencies are satisfied
+    [exit]: 0
+
 ## Extend with custom modules
 
 To extend dolphin's functionality with your custom modules is easy. It is Ruby anyway. For example, to add Centos related functions:
