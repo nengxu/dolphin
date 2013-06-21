@@ -33,6 +33,23 @@ class Dolphin::Deploy < Dolphin::Base
     invoke "dolphin:lock:release"
   end
 
+  desc "rollback", "rollback to previous release or a specified tag"
+  def rollback(tag=nil)
+    # check lock, must explicitly not passing arguments
+    invoke "dolphin:lock:check", []
+    # put lock
+    invoke "dolphin:lock:create", []
+
+    # checkout tag
+    invoke "dolphin:git:checkout"
+
+    # restart app server
+    invoke "dolphin:puma:restart", []
+
+    # remove lock
+    invoke "dolphin:lock:release", []
+  end
+
   desc "try", "normal deploy procedure"
   def try
     menu = [
