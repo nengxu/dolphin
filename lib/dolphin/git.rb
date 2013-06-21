@@ -6,6 +6,8 @@ class Dolphin::Git < Dolphin::Base
     menu = [
       "
         cd #{@deploy_dir}
+        # Save git head info
+        git rev-parse HEAD > #{@head_file}
         git fetch
         git stash
         git checkout #{@branch}

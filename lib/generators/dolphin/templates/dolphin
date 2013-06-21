@@ -84,6 +84,8 @@ class Dolphin::Base
     @deploy_date = Time.now.strftime("%m%d%H%M")
     # custom content for the lock file
     @lock_message = "Deploy started at #{@deploy_date} in progress\n"
+    # name and location of the head file to store git head info
+    @head_file = "#{@deploy_dir}/tmp/pids/head.txt"
 
   end
 end
