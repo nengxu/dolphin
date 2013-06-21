@@ -117,7 +117,7 @@ Please note that the default environment is alpha for developers. So there is no
 
 ### Output
 
-The outputs from servers are captured and show on your console as in the following sections.
+The outputs from servers are captured and shown on your console as in the following sections.
 
 #### Commands section
 In this section, the list of commands from the current group is printed. For example:
