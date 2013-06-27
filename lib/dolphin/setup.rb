@@ -7,9 +7,11 @@ class Dolphin::Setup < Dolphin::Base
       "
         # git clone
         if [ ! -d 'chruby' ]; then git clone https://github.com/postmodern/chruby.git ; fi
-        # checkout tag
         cd chruby
-        git checkout v0.3.5
+        # update
+        git fetch
+        # checkout tag
+        git checkout v0.3.6
         # install
         sudo make install
       ",
