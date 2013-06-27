@@ -20,6 +20,25 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
+  desc "ruby_install", "install ruby_install"
+  def ruby_install
+    menu = [
+      "
+        # git clone
+        if [ ! -d 'ruby-install' ]; then git clone https://github.com/postmodern/ruby-install.git ; fi
+        cd ruby-install
+        # update
+        git fetch
+        # checkout tag
+        git checkout v0.2.0
+        # install
+        sudo make install
+      ",
+    ]
+
+    execute menu
+  end
+
   desc "repo", "repository set up."
   def repo
     menu = [
