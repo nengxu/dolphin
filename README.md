@@ -115,6 +115,10 @@ Switch to a specific tag / branch / commit in alpha environment:
 
 Please note that the default environment is alpha for developers. So there is no need to append "-e alpha" in the above example.
 
+If you want to run a task locally on your own box, just set up a :local environment and put 'localhost' into @servers, like in the generated bin/dolphin. Then you can run the task like:
+
+    $ bin/dolphin setup chruby -e local
+
 ### Output
 
 The outputs from servers are captured and shown on your console as in the following sections.

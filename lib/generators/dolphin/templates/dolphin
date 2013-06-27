@@ -50,6 +50,10 @@ class Dolphin::Base
     @env = @branch =options[:env]
 
     case @env
+    when 'local'
+      @servers = [
+        'localhost',
+      ]
     when 'qa'
       @servers = [
         'qa01.best_app.com',
