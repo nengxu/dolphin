@@ -87,6 +87,7 @@ class Dolphin::Setup < Dolphin::Base
     menu = [
       "
         # install bundler
+        cd #{@app_dir}
         sudo gem install bundler
       ",
     ]
