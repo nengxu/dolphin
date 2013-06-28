@@ -70,7 +70,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "select", "select ruby, arg: version"
-  def select(version="2.0.0-p195")
+  def select(version="2.0.0-p247")
     menu = [
       "
         # select ruby
