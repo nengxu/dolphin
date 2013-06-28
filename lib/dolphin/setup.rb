@@ -20,8 +20,8 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
-  desc "ruby_install", "install ruby_install"
-  def ruby_install
+  desc "ruby_install", "update ruby_install"
+  def ruby_install(version='master')
     menu = [
       "
         # git clone
@@ -30,7 +30,7 @@ class Dolphin::Setup < Dolphin::Base
         # update
         git fetch
         # checkout tag
-        git checkout v0.2.0
+        git checkout #{version}
         # install
         sudo make install
       ",
