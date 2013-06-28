@@ -58,17 +58,11 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "ruby", "install ruby, arg: version"
-  def ruby(version="2.0.0-p195")
+  def ruby(version="2.0.0-p247")
     menu = [
       "
-        # update ruby-build
-        cd ruby-build
-        git pull
-        sudo ./install.sh
-      ",
-      "
         # install ruby
-        sudo ruby-build #{version} /opt/rubies/ruby-#{version}
+        sudo ruby-install ruby #{version}
       ",
     ]
 
