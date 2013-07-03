@@ -95,5 +95,19 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
+  desc "newrelic", "install newrelic agent"
+  def newrelic
+    menu = [
+      "
+        # install bundler
+        sudo rpm -Uvh http://download.newrelic.com/pub/newrelic/el5/i386/newrelic-repo-5-3.noarch.rpm
+        sudo yum -y install newrelic-sysmond
+        sudo nrsysmond-config --set license_key=c55d35d552a49f06d5183c95d41de60cd9754237
+      ",
+    ]
+
+    execute menu
+  end
+
 end
 
