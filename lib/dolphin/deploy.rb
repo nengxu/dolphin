@@ -63,4 +63,15 @@ class Dolphin::Deploy < Dolphin::Base
     execute menu
   end
 
+  desc "newrelic", "start newrelic"
+  def newrelic
+    menu = [
+      "
+        sudo /etc/init.d/newrelic-sysmond start
+      ",
+    ]
+
+    execute menu
+  end
+
 end
