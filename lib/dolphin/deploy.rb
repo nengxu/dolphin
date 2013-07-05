@@ -56,6 +56,8 @@ class Dolphin::Deploy < Dolphin::Base
       "
         cd #{@deploy_dir}
         pwd
+        chruby
+        which bundle
         bundle check
       ",
     ]
