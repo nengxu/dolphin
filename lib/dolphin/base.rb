@@ -137,7 +137,7 @@ class Dolphin::Base < Thor
           ch.send_data "source ~/.bash_profile\n"
 
           # pick up ruby
-          ch.send_data "chruby #{@ruby_version}\n"
+          ch.send_data "chruby >& /dev/null\n"
 
           # Output each command as if they were entered on the command line
           commands.each do |command|

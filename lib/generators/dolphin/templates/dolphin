@@ -19,8 +19,6 @@ class Dolphin::Base
     @user = 'deploy'
     # location of git repository
     @github = "git@github.com:nengxu/dolphin.git"
-    # which ruby, for chruby
-    @ruby_version = 'ruby-2.0.0-p247'
 
     # settings with default values
     # -----------------------------

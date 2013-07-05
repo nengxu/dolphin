@@ -47,8 +47,6 @@ Edit the bin/dolphin script generated as above to adjust settings. Please refer 
     @user = 'deploy'
     # location of git repository
     @github = "git@github.com:nengxu/dolphin.git"
-    # which ruby, for chruby
-    @ruby_version = 'ruby-2.0.0-p195'
 
     case @env
     when 'qa'
