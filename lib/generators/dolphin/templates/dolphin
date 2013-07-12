@@ -72,6 +72,17 @@ class Dolphin::Base
       @branch = 'master'
     end
 
+    # running in local mode
+    if options[:local]
+      # by default, log in as yourself
+      @user = `whoami`.strip
+      # may log in as another user
+      # @user = 'neng'
+      @servers = [
+        'localhost',
+      ]
+    end
+
     # ===================================
     # settings to avoid simultaneous deployments
     # ===================================

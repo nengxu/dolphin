@@ -11,6 +11,7 @@ class Dolphin::Base < Thor
 # =============================================================================
 
   class_option :env, :aliases => '-e', :type => :string, :default => 'alpha'
+  class_option :local, :aliases => '-l', :type => :boolean, :default => false
 
   def initialize(args=[], options={}, config={})
     super(args, options, config)

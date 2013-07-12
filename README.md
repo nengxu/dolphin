@@ -180,6 +180,25 @@ In this section, the outputs from current command group are printed out again. H
     [output]: The Gemfile's dependencies are satisfied
     [exit]: 0
 
+### Local mode
+
+Dolphin can also be used to deploy to developer's local machine. Just pass the --local (or -l for short) option when issue command. By default, dolphin will log into localhost as yourself. You may also specify another user to log in as.
+
+    # running in local mode
+    if options[:local]
+      # by default, log in as yourself
+      @user = `whoami`.strip
+      # may log in as another user
+      # @user = 'neng'
+      @servers = [
+        'localhost',
+      ]
+    end
+
+For example, you can start puma in production mode on your local machine:
+
+    bin/dolphin puma start -e production -l
+
 ## Extend with custom modules
 
 To extend dolphin's functionality with your custom modules is easy. It is Ruby anyway. For example, to add Centos related functions:
