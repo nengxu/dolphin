@@ -10,6 +10,8 @@ class Dolphin::Setup < Dolphin::Base
         cd chruby
         # update
         git fetch
+        git checkout master
+        git rebase origin/master
         # checkout tag
         git checkout #{version}
         # install
@@ -29,6 +31,8 @@ class Dolphin::Setup < Dolphin::Base
         cd ruby-install
         # update
         git fetch
+        git checkout master
+        git rebase origin/master
         # checkout tag
         git checkout #{version}
         # install
