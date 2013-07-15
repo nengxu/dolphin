@@ -1,8 +1,8 @@
 # set up target servers
 class Dolphin::Setup < Dolphin::Base
 
-  desc "chruby", "install chruby"
-  def chruby
+  desc "chruby", "install/update chruby"
+  def chruby(version='v0.3.6')
     menu = [
       "
         # git clone
@@ -11,7 +11,7 @@ class Dolphin::Setup < Dolphin::Base
         # update
         git fetch
         # checkout tag
-        git checkout v0.3.6
+        git checkout #{version}
         # install
         sudo make install
       ",
@@ -20,7 +20,7 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
-  desc "ruby_install", "update ruby_install"
+  desc "ruby_install", "install/update ruby_install"
   def ruby_install(version='master')
     menu = [
       "
