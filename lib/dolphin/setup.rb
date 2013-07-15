@@ -45,6 +45,13 @@ class Dolphin::Setup < Dolphin::Base
 
   desc "repo", "repository set up."
   def repo
+    # branch 'master' is always created by git
+    if @branch == 'master'
+      cmd = "git checkout master"
+    else
+      cmd = "git checkout -b #{@branch} origin/#{@branch}"
+    end
+
     menu = [
       "
         # init git repository
@@ -54,7 +61,7 @@ class Dolphin::Setup < Dolphin::Base
       "
         # set up tracking branch
         cd #{@deploy_dir}
-        git checkout -b #{@branch} origin/#{@branch}
+        #{cmd}
       ",
     ]
 
