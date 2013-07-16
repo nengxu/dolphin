@@ -50,29 +50,26 @@ class Dolphin::Base
     @env = @branch =options[:env]
 
     case @env
-    when 'local'
-      @servers = [
-        'localhost',
-      ]
     when 'qa'
-      @servers = [
-        'qa01.best_app.com',
-        'qa02.best_app.com',
-      ]
+      @server_hash = {
+        q1: 'qa01.best_app.com',
+        q2: 'qa02.best_app.com',
+      }
     when 'production'
-      @servers = [
-        'prod01.best_app.com',
-        'prod02.best_app.com',
-      ]
+      @server_hash = {
+        p1: 'prod01.best_app.com',
+        p2: 'prod02.best_app.com',
+      }
     else # @env == 'alpha'
       # list of servers for this environment
-      @servers = [
-        'dev01.best_app.com',
-        'dev02.best_app.com',
-      ]
+      @server_hash = {
+        d1: 'dev01.best_app.com',
+        d2: 'dev02.best_app.com',
+      }
       # customized branch, default is the same as @env
       @branch = 'master'
     end
+    @servers = @server_hash.values
 
     # running in local mode
     if options[:local]
@@ -82,6 +79,13 @@ class Dolphin::Base
       # @user = 'neng'
       @servers = [
         'localhost',
+      ]
+    end
+
+    # apply to one target server
+    if options[:target]
+      @servers = [
+        @server_hash[options[:target].to_sym],
       ]
     end
 
