@@ -45,26 +45,28 @@ Edit the bin/dolphin script generated as above to adjust settings. Please refer 
     @application = 'best_app'
     # on server, the user account for deploying
     @user = 'deploy'
+    # on server, the user group for deploying
+    @user_group = 'deploy'
     # location of git repository
     @github = "git@github.com:nengxu/dolphin.git"
 
     case @env
     when 'qa'
-      @servers = [
-        'qa01.best_app.com',
-        'qa02.best_app.com',
-      ]
+      @server_hash = {
+        q1: 'qa01.best_app.com',
+        q2: 'qa02.best_app.com',
+      }
     when 'production'
-      @servers = [
-        'prod01.best_app.com',
-        'prod02.best_app.com',
-      ]
+      @server_hash = {
+        p1: 'prod01.best_app.com',
+        p2: 'prod02.best_app.com',
+      }
     else # @env == 'alpha'
       # list of servers for this environment
-      @servers = [
-        'dev01.best_app.com',
-        'dev02.best_app.com',
-      ]
+      @server_hash = {
+        d1: 'dev01.best_app.com',
+        d2: 'dev02.best_app.com',
+      }
       # customized branch, default is the same as @env
       @branch = 'master'
     end
@@ -198,6 +200,28 @@ Dolphin can also be used to deploy to developer's local machine. Just pass the -
 For example, you can start puma in production mode on your local machine:
 
     bin/dolphin puma start -e production -l
+
+### Deploy to one specific server
+
+Sometimes we need to take some actions on only one specific server. Just pass the --target (or -t for short) option when issue command. Notice that in @server_hash, we difine a key-value pair for each server. So we only need to pass the key for that specific server as the -t option.
+
+    bin/dolphin nginx conf -t q2
+
+Relevant settings in bin/dolphin are:
+
+    case @env
+    when 'qa'
+      @server_hash = {
+        q1: 'qa01.best_app.com',
+        q2: 'qa02.best_app.com',
+      }
+
+    # apply to one target server
+    if options[:target]
+      @servers = [
+        @server_hash[options[:target].to_sym],
+      ]
+    end
 
 ## Extend with custom modules
 
