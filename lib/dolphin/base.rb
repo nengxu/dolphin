@@ -10,8 +10,12 @@ class Dolphin::Base < Thor
 # class options
 # =============================================================================
 
-  class_option :env, :aliases => '-e', :type => :string, :default => 'alpha'
-  class_option :local, :aliases => '-l', :type => :boolean, :default => false
+  # deploy environment
+  class_option :env, aliases: '-e', type: :string, default: 'alpha'
+  # deploy to one specific target server
+  class_option :target, aliases: '-t', type: :string, default: nil
+  # deploy to localhost
+  class_option :local, aliases: '-l', type: :boolean, default: false
 
   def initialize(args=[], options={}, config={})
     super(args, options, config)
