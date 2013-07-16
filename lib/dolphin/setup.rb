@@ -22,6 +22,18 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
+  desc "app_dir", "set up app dir"
+  def app_dir
+    menu = [
+      "
+        sudo mkdir -p #{@app_dir}
+        sudo chown #{@user}:#{@user_group} #{@app_dir}
+      ",
+    ]
+
+    execute menu
+  end
+
   desc "ruby_install", "install/update ruby_install"
   def ruby_install(version='master')
     menu = [

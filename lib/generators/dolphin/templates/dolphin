@@ -17,6 +17,8 @@ class Dolphin::Base
     @application = 'best_app'
     # on server, the user account for deploying
     @user = 'deploy'
+    # on server, the user group for deploying
+    @user_group = 'deploy'
     # location of git repository
     @github = "git@github.com:nengxu/dolphin.git"
 
