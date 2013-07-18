@@ -6,8 +6,7 @@ class Dolphin::Puma < Dolphin::Base
     menu = [
       "
         cd #{@deploy_dir}
-        RAILS_ENV=#{@env} bundle exec puma -t 8:32 -e #{@env} -d -b unix://#{@sockets}/#{@application}.sock -S #{@pids}/#{@application}.state --control unix://#{@sockets}/pumactl.sock
-        # --pidfile #{@pids}/#{@application}.pid
+        RAILS_ENV=#{@env} bundle exec puma -C config/puma.rb
       ",
     ]
 

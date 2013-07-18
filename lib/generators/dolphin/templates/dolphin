@@ -28,9 +28,6 @@ class Dolphin::Base
     @app_dir = '/rails'
     # on servers under @app_dir, the directory where this application resides
     @deploy_dir = "#{@app_dir}/#{@application}"
-    # puma related settings
-    @sockets = "#{@deploy_dir}/tmp/sockets"
-    @pids = "#{@deploy_dir}/tmp/pids"
 
     # internal variables, no need to change by user
     # -----------------------------
