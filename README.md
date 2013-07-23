@@ -94,6 +94,9 @@ Edit the config/puma.rb script generated as above to adjust settings. Please ref
     # name of this application
     application = 'best_app'
 
+You may also refer to Puma for explanation of options:
+* [puma]
+
 ## Usage
 
 ### Help
@@ -288,6 +291,7 @@ To extend dolphin's functionality with your custom modules is easy. It is Ruby a
 
 * [capistrano]
 * [chruby]
+* [puma]
 * [git-deploy]
 * [hell]
 * [mina]
@@ -304,6 +308,7 @@ To extend dolphin's functionality with your custom modules is easy. It is Ruby a
 
 [capistrano]: https://github.com/capistrano/capistrano
 [chruby]: https://github.com/postmodern/chruby
+[puma]: https://github.com/puma/puma
 [git-deploy]: https://github.com/mislav/git-deploy
 [hell]: https://github.com/seatgeek/hell
 [mina]: https://github.com/nadarei/mina
