@@ -19,7 +19,9 @@ Dolphin: deploy agilely like dolphins can swim. A multi-threaded multi-stage dep
 * Bye bye, complexity;
 * Welcome, nimbleness.
 
-## Installation / Rails generator
+## Installation / Rails generators
+
+### Installation
 
 Add this line to your application's Gemfile:
 
@@ -29,13 +31,25 @@ Or install it yourself as:
 
     $ gem install dolphin
 
+### Generator for dolphin executable
+
 Run generator from your Rails application:
 
     $ bin/rails g dolphin:install
 
 This will create an executable script as bin/dolphin.
 
+### Generator for Puma config
+
+Run generator from your Rails application:
+
+    $ bin/rails g dolphin:puma
+
+This will create a config file for Puma as config/puma.rb.
+
 ## Configuration
+
+### Config for dolphin executable
 
 Edit the bin/dolphin script generated as above to adjust settings. Please refer to detailed comments inside the script. Minimum config would require the following:
 
@@ -70,6 +84,15 @@ Edit the bin/dolphin script generated as above to adjust settings. Please refer 
       # customized branch, default is the same as @env
       @branch = 'master'
     end
+
+### Config for Puma
+
+Edit the config/puma.rb script generated as above to adjust settings. Please refer to detailed comments inside the script. Minimum config would require the following:
+
+    # settings require user input
+    # -----------------------------
+    # name of this application
+    application = 'best_app'
 
 ## Usage
 
