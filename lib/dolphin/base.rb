@@ -139,7 +139,7 @@ class Dolphin::Base < Thor
           end
 
           # has to explicitly call shell startup script
-          ch.send_data "source ~/.bash_profile\n"
+          ch.send_data "source ~/.bashrc\n"
 
           # pick up ruby
           ch.send_data "chruby >& /dev/null\n"
