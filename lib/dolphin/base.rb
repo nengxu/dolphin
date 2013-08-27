@@ -169,4 +169,23 @@ class Dolphin::Base < Thor
     puts "\n\n"
   end
 
+  def upload(source, dest, target_server=nil)
+    if target_server # solo
+      tracks = 1
+      target = [target_server]
+    else
+      # use Parallel to execute commands on multiple servers in parallel
+      tracks = @servers.size
+      # 3 threads maximum
+      tracks = 3 if tracks > 3
+      target = @servers
+    end
+
+    Parallel.map(target, in_threads: tracks) do |server|
+      command = "scp #{source} #{@user}@#{server}:#{dest}"
+      puts command
+      raise unless system(command, out: $stdout, err: :out)
+    end
+  end
+
 end
