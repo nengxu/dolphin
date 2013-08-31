@@ -16,6 +16,9 @@ class Dolphin::Setup < Dolphin::Base
         git checkout #{version}
         # install
         sudo make install
+        # system wise
+        # sudo echo '[ -n \"$BASH_VERSION\" ] || [ -n \"$ZSH_VERSION\" ] || return' | sudo tee /etc/profile.d/chruby.sh
+        # sudo echo 'source /usr/local/share/chruby/chruby.sh' | sudo tee -a /etc/profile.d/chruby.sh
       ",
     ]
 
