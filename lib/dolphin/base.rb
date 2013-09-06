@@ -14,6 +14,8 @@ class Dolphin::Base < Thor
   class_option :env, aliases: '-e', type: :string, default: 'alpha'
   # deploy to one specific target server
   class_option :target, aliases: '-t', type: :string, default: nil
+  # deploy to one specific server group
+  class_option :group, aliases: '-g', type: :string, default: nil
   # deploy to localhost
   class_option :local, aliases: '-l', type: :boolean, default: false
 
