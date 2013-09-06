@@ -56,9 +56,21 @@ class Dolphin::Base
       }
     when 'production'
       @server_hash = {
-        p1: 'prod01.best_app.com',
-        p2: 'prod02.best_app.com',
+        app1: 'app1.best_app.com',
+        app2: 'app2.best_app.com',
+        mongo1: 'mongo1.best_app.com',
+        mongo2: 'mongo2.best_app.com',
+        mongo3: 'mongo3.best_app.com',
+        graylog: 'graylog.best_app.com',
+        elasticsearch: 'elasticsearch.best_app.com',
       }
+
+      @group_hash = {
+        mongo: [:mongo1, :mongo2, :mongo3, ],
+        java: [:graylog, :elasticsearch, ],
+        app: [:app1, :app2, ],
+      }
+
     else # @env == 'alpha'
       # list of servers for this environment
       @server_hash = {
@@ -86,6 +98,11 @@ class Dolphin::Base
       @servers = [
         @server_hash[options[:target].to_sym],
       ]
+    end
+
+    # apply to one target group
+    if options[:group]
+      @servers = @group_hash[options[:group].to_sym].map {|item| @server_hash[item]}
     end
 
     # ===================================
