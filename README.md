@@ -253,7 +253,7 @@ Relevant settings in bin/dolphin are:
 
 Sometimes we need to take some actions on only one specific group, which may contains arbitrary number of servers. Just pass the --group (or -g for short) option when issue command. Notice that in @group_hash, we difine a key-value pair for each group. So we only need to pass the key for that specific group as the -g option.
 
-    bin/dolphin nginx conf -t q2
+    bin/dolphin mongo install -g mongo
 
 Relevant settings in bin/dolphin are:
 
