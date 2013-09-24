@@ -249,6 +249,25 @@ Relevant settings in bin/dolphin are:
       ]
     end
 
+### Deploy to one specific group
+
+Sometimes we need to take some actions on only one specific group, which may contains arbitrary number of servers. Just pass the --group (or -g for short) option when issue command. Notice that in @group_hash, we difine a key-value pair for each group. So we only need to pass the key for that specific group as the -g option.
+
+    bin/dolphin nginx conf -t q2
+
+Relevant settings in bin/dolphin are:
+
+      @group_hash = {
+        mongo: [:mongo1, :mongo2, :mongo3, ],
+        java: [:graylog, :elasticsearch, ],
+        app: [:app1, :app2, ],
+      }
+
+    # apply to one target group
+    if options[:group]
+      @servers = @group_hash[options[:group].to_sym].map {|item| @server_hash[item]}
+    end
+
 ## Extend with custom modules
 
 To extend dolphin's functionality with your custom modules is easy. It is Ruby anyway. For example, to add Centos related functions:
