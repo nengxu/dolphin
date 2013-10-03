@@ -18,6 +18,8 @@ class Dolphin::Base < Thor
   class_option :group, aliases: '-g', type: :string, default: nil
   # deploy to localhost
   class_option :local, aliases: '-l', type: :boolean, default: false
+  # dry-run
+  class_option :dry, aliases: '-d', type: :boolean, default: false
 
   def initialize(args=[], options={}, config={})
     super(args, options, config)
@@ -65,6 +67,12 @@ class Dolphin::Base < Thor
   end
 
   def capture(command, server)
+    # dry-run
+    if options[:dry]
+      puts "Capture on #{server}: #{command}"
+      return '' # empty string for default unix return result
+    end
+
     # capture output from one target server
     output = ''
     session = ssh_connection(server)
@@ -105,6 +113,13 @@ class Dolphin::Base < Thor
       # 3 threads maximum
       tracks = 3 if tracks > 3
       target = @servers
+    end
+
+    # dry-run
+    if options[:dry]
+      puts "Running on: #{target}"
+      puts "#{'='*60}\n"
+      return
     end
 
     # record output to display at the end
@@ -186,7 +201,11 @@ class Dolphin::Base < Thor
     Parallel.map(target, in_threads: tracks) do |server|
       command = "scp #{source} #{@user}@#{server}:#{dest}"
       puts command
-      raise unless system(command, out: $stdout, err: :out)
+
+      # dry-run
+      unless options[:dry]
+        raise unless system(command, out: $stdout, err: :out)
+      end
     end
   end
 
