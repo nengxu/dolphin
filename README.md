@@ -268,6 +268,11 @@ Relevant settings in bin/dolphin are:
       @servers = @group_hash[options[:group].to_sym].map {|item| @server_hash[item]}
     end
 
+### Dry-run mode
+Passing the --dry (or -d for short) option to enter dry-run mode.
+
+    bin/dolphin deploy go -d
+
 ## Extend with custom modules
 
 To extend dolphin's functionality with your custom modules is easy. It is Ruby anyway. For example, to add Centos related functions:
@@ -304,6 +309,15 @@ To extend dolphin's functionality with your custom modules is easy. It is Ruby a
 
     class Dolphin::CLI < Thor
       register(Dolphin::Centos, 'centos', 'centos', 'Adjust Centos config')
+    end
+
+## Select Linux distribution specific modules
+Dolphin contains some modules that are Linux distribution specific. For example, if you are using Ubuntu, you can include Ubuntu specific module by adding the following to bin/dolphin:
+
+    require "dolphin/ubuntu/mongodb"
+
+    class Dolphin::CLI < Thor
+      register(Dolphin::Mongodb, 'mongodb', 'mongodb', 'MongoDB related tasks')
     end
 
 ## Related gems
