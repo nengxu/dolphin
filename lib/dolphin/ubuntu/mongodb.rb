@@ -19,6 +19,7 @@ class Dolphin::Mongodb < Dolphin::Base
   def disable
     menu = [
       "
+        sudo stop mongodb
         sudo sh -c 'echo manual > /etc/init/mongodb.override'
       ",
     ]
@@ -58,12 +59,6 @@ class Dolphin::Mongodb < Dolphin::Base
     menu = [
       ufw.join("\n"),
 
-      # allow world access
-      %{
-        sudo ufw allow from any to any port 27017
-        sudo ufw allow from any to any port 28017
-      },
-
       # config files
       %{
         sudo mv /tmp/mongodb.conf /etc/
@@ -89,8 +84,8 @@ class Dolphin::Mongodb < Dolphin::Base
       %{
         mkdir -p ~/backups/mongodb
         mv /tmp/mg* ~/backups/mongodb
-        # # add cron job to /var/spool/cron/crontabs/vidi
-        crontab /tmp/vidi
+        # # add cron job to /var/spool/cron/crontabs/user
+        crontab /tmp/cron.txt
       },
 
     ]
