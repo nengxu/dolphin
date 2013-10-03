@@ -312,7 +312,7 @@ To extend dolphin's functionality with your custom modules is easy. It is Ruby a
     end
 
 ## Select Linux distribution specific modules
-Dolphin contains some modules that are Linux distribution specific. For example, if you are using Ubuntu, you can include Ubuntu specific module by adding the following to bin/dolphin:
+Dolphin contains some modules that are Linux distribution specific. For example, if you are using Ubuntu, you can include an Ubuntu specific module by adding the following to bin/dolphin:
 
     require "dolphin/ubuntu/mongodb"
 
