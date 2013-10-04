@@ -104,7 +104,8 @@ class Dolphin::Graylog < Dolphin::Base
   desc "webc", "config graylog2 web interface"
   def webc
     # upload files
-    upload("#{@config_root}/log/nginx/*", "/tmp/")
+    upload("#{@config_root}/graylog/nginx/*", "/tmp/")
+    upload("#{@config_root}/graylog/rails/*", "#{@app_dir}/graylog2/config/")
 
     servername = @server_hash[:log]
     menu = [
@@ -114,12 +115,12 @@ class Dolphin::Graylog < Dolphin::Base
         sudo mv /tmp/graylog2.conf /etc/nginx/sites-available/
         sudo rm -f /etc/nginx/sites-enabled/default
         sudo ln -sf /etc/nginx/sites-available/graylog2.conf /etc/nginx/sites-enabled
+        sudo service nginx restart
       },
     ]
 
     execute menu
 
-    upload("#{@config_root}/log/rails/*", "#{app_dir}/graylog2/config/")
   end
 
   desc "webb", "begin graylog2 web interface"
