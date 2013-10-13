@@ -84,11 +84,11 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "ruby", "install ruby, arg: version"
-  def ruby(version="2.0.0-p247")
+  def ruby(version="ruby 2.1.0-preview1")
     menu = [
       "
         # install ruby
-        sudo ruby-install ruby #{version}
+        sudo ruby-install #{version}
       ",
     ]
 
@@ -96,12 +96,12 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "select", "select ruby, arg: version"
-  def select(version="2.0.0-p247")
+  def select(version="ruby-2.1.0-preview1")
     menu = [
       "
         # select ruby
         cd #{@app_dir}
-        echo ruby-#{version} > .ruby-version
+        echo #{version} > .ruby-version
       ",
     ]
 
