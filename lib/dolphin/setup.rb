@@ -84,9 +84,11 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "ruby", "install ruby, arg: version"
-  def ruby(version="ruby 2.1.0-preview1")
+  def ruby(version="rubinius 2.1.1")
     menu = [
       "
+        # intall gem system wise
+        # sudo gem install bundler --no-user-install
         # install ruby
         sudo ruby-install #{version}
       ",
@@ -96,7 +98,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "select", "select ruby, arg: version"
-  def select(version="ruby-2.1.0-preview1")
+  def select(version="rubinius-2.1.1")
     menu = [
       "
         # select ruby
