@@ -13,7 +13,7 @@ class Dolphin::Setup < Dolphin::Base
         git checkout master
         git rebase origin/master
         # checkout tag
-        git checkout #{version}
+        # git checkout #{version}
         # install
         sudo make install
         # system wise
