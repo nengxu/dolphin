@@ -40,7 +40,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "net-ssh"
   spec.add_dependency "parallel"
 
-  spec.add_development_dependency "bundler", "~> 1.3"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"
 
 end
