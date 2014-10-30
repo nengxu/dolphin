@@ -84,7 +84,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "ruby", "install ruby, arg: version"
-  def ruby(version="rubinius 2.1.1")
+  def ruby(version="ruby")
     menu = [
       "
         # intall gem system wise
