@@ -90,7 +90,7 @@ class Dolphin::Setup < Dolphin::Base
         # intall gem system wise
         # sudo gem install bundler --no-user-install
         # install ruby
-        sudo ruby-install #{version}
+        sudo /usr/local/bin/ruby-install #{version}
       ",
     ]
 
