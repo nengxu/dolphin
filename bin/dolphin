@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+require "dolphin"
+
+class Dolphin::Base
+
+  private
+
+  # deployment environments
+  def env
+    # internal variables, no need to change by user
+    # -----------------------------
+    # ssh sessions
+    @sessions = {}
+
+    # only running in local mode
+    # by default, log in as yourself
+    @user = `whoami`.strip
+    # may log in as another user
+    # @user = 'neng'
+    @servers = [
+      'localhost',
+    ]
+
+  end
+end
+
+# start the CLI
+Dolphin::CLI.start
