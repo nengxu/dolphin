@@ -21,6 +21,8 @@ class Dolphin::Base
       'localhost',
     ]
 
+    # home dir as app_dir
+    @app_dir = '~'
   end
 end
 
