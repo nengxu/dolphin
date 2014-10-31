@@ -116,7 +116,7 @@ class Dolphin::Setup < Dolphin::Base
       "
         # install bundler
         cd #{@app_dir}
-        sudo gem install bundler
+        gem install bundler
       ",
     ]
 
