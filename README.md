@@ -31,6 +31,13 @@ Or install it yourself as:
 
     $ gem install dolphin
 
+### Default dolphin executable
+The dolphin gem comes with a minimal default executable, called 'dolphin', installed to the normal gem executable location (eg., ~/.gem/ruby/2.1.4/bin/dolphin). It is assumed to be running as the current user and in local host mode.
+
+So it can be used to run various tasks on the local host. For example:
+
+    $ dolphin setup gems
+
 ### Generator for dolphin executable
 
 Run generator from your Rails application:
