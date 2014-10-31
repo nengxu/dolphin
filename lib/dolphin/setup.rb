@@ -110,14 +110,17 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
-  desc "bundler", "install bundler"
-  def bundler
+  desc "gems", "install default gems"
+  def gems(ruby="ruby-2.1.4")
     menu = [
-      "
-        # install bundler
+      %{
         cd #{@app_dir}
-        gem install bundler
-      ",
+        # switch to the target ruby
+        chruby #{ruby}
+        # first gem-ctags so latter gems can be tagged
+        gem install gem-ctags
+        gem install bundler pry dolphin letters specific_install fled did_you_mean
+      },
     ]
 
     execute menu
