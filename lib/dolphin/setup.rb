@@ -98,7 +98,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "select", "select ruby, arg: version"
-  def select(version="rubinius-2.1.1")
+  def select(version="ruby-2.1.4")
     menu = [
       "
         # select ruby
@@ -110,7 +110,7 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
-  desc "gems", "install default gems"
+  desc "gems", "install default gems, arg: ruby"
   def gems(ruby="ruby-2.1.4")
     menu = [
       %{
