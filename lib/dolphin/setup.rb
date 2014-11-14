@@ -112,7 +112,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "select", "select ruby, arg: version"
-  def select(version="ruby-2.1.4")
+  def select(version="ruby-2.1.5")
     menu = [
       "
         # select ruby
@@ -125,7 +125,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "gems", "install default gems, arg: ruby"
-  def gems(ruby="ruby-2.1.4")
+  def gems(ruby="ruby-2.1.5")
     menu = [
       %{
         cd #{@app_dir}
