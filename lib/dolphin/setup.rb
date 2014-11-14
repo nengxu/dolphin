@@ -111,12 +111,13 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
-  desc "select", "select ruby, arg: version"
-  def select(version="ruby-2.1.5")
+  desc "select", "select ruby, arg: dir, version"
+  def select(dir=nil, version="ruby-2.1.5")
+    dir ||= @app_dir
     menu = [
       "
         # select ruby
-        cd #{@app_dir}
+        cd #{dir}
         echo #{version} > .ruby-version
       ",
     ]
