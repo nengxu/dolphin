@@ -97,6 +97,20 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
+  desc "rmry", "remove ruby, arg: version, brand"
+  def rmry(version, brand='ruby')
+    menu = [
+      "
+        # uninstall ruby
+        sudo rm -rf /opt/rubies/#{brand}-#{version}
+        # uninstall gems
+        rm -rf ~/.gem/#{brand}/#{version}
+      ",
+    ]
+
+    execute menu
+  end
+
   desc "select", "select ruby, arg: version"
   def select(version="ruby-2.1.4")
     menu = [
