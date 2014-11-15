@@ -87,10 +87,9 @@ class Dolphin::Setup < Dolphin::Base
   def ruby(version="ruby")
     menu = [
       "
-        # intall gem system wise
-        # sudo gem install bundler --no-user-install
         # install ruby
-        sudo /usr/local/bin/ruby-install #{version}
+        # sudo /usr/local/bin/ruby-install #{version}
+        /usr/local/bin/ruby-install #{version}
       ",
     ]
 
@@ -102,7 +101,8 @@ class Dolphin::Setup < Dolphin::Base
     menu = [
       "
         # uninstall ruby
-        sudo rm -rf /opt/rubies/#{brand}-#{version}
+        # sudo rm -rf /opt/rubies/#{brand}-#{version}
+        rm -rf ~/.rubies/#{brand}-#{version}
         # uninstall gems
         rm -rf ~/.gem/#{brand}/#{version}
       ",
