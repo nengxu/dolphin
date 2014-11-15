@@ -96,8 +96,8 @@ class Dolphin::Setup < Dolphin::Base
     execute menu
   end
 
-  desc "rmry", "remove ruby, arg: version, brand"
-  def rmry(version, brand='ruby')
+  desc "rmrb", "remove ruby, arg: version, brand"
+  def rmrb(version, brand='ruby')
     menu = [
       "
         # uninstall ruby
