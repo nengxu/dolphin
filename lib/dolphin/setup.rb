@@ -134,7 +134,16 @@ class Dolphin::Setup < Dolphin::Base
         chruby #{ruby}
         # first gem-ctags so latter gems can be tagged
         gem install gem-ctags
-        gem install bundler pry dolphin letters specific_install fled did_you_mean
+        # handle gems
+        gem install bundler specific_install
+        # debugging tools
+        gem install letters did_you_mean
+        # pry
+        gem install pry pry-rescue pry-stack_explorer
+        # CLI / deploy
+        gem install dolphin boson
+        # dir / file tools
+        gem install fled markdown2confluence
       },
     ]
 
