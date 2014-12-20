@@ -139,11 +139,13 @@ class Dolphin::Setup < Dolphin::Base
         # debugging tools
         gem install letters did_you_mean
         # pry
-        gem install pry pry-rescue pry-stack_explorer
+        gem install pry pry-rescue pry-stack_explorer hirb
         # CLI / deploy
         gem install dolphin boson
         # dir / file tools
         gem install fled markdown2confluence
+        # shell tool
+        gem install ru
       },
     ]
 
