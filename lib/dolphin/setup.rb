@@ -2,7 +2,7 @@
 class Dolphin::Setup < Dolphin::Base
 
   desc "chruby", "install/update chruby"
-  def chruby(version='v0.3.8')
+  def chruby(version=:master)
     menu = [
       "
         # git clone
@@ -13,7 +13,7 @@ class Dolphin::Setup < Dolphin::Base
         git checkout master
         git rebase origin/master
         # checkout tag
-        # git checkout #{version}
+        git checkout #{version}
         # install
         sudo make install
         # system wise
@@ -38,7 +38,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "ruby_install", "install/update ruby_install"
-  def ruby_install(version='master')
+  def ruby_install(version=:master)
     menu = [
       "
         # git clone
@@ -49,7 +49,7 @@ class Dolphin::Setup < Dolphin::Base
         git checkout master
         git rebase origin/master
         # checkout tag
-        # git checkout #{version}
+        git checkout #{version}
         # install
         sudo make install
       ",
