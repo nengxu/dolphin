@@ -101,7 +101,7 @@ class Dolphin::Setup < Dolphin::Base
     menu = [
       "
         # uninstall ruby
-        # sudo rm -rf /opt/rubies/#{brand}-#{version}
+        sudo rm -rf /opt/rubies/#{brand}-#{version}
         rm -rf ~/.rubies/#{brand}-#{version}
         # uninstall gems
         rm -rf ~/.gem/#{brand}/#{version}
