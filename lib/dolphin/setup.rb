@@ -146,6 +146,8 @@ class Dolphin::Setup < Dolphin::Base
         gem install fled markdown2confluence
         # shell tool
         gem install ru
+        # github tool
+        gem install github
       },
     ]
 
