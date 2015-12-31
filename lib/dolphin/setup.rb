@@ -112,7 +112,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "select", "select ruby, arg: dir, version"
-  def select(dir=nil, version="ruby-2.2.2")
+  def select(dir=nil, version="ruby-2.3.0")
     dir ||= @app_dir
     menu = [
       "
@@ -126,7 +126,7 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "gems", "install default gems, arg: ruby"
-  def gems(ruby="ruby-2.2.2")
+  def gems(ruby="ruby-2.3.0")
     menu = [
       %{
         cd #{@app_dir}
@@ -169,4 +169,3 @@ class Dolphin::Setup < Dolphin::Base
   end
 
 end
-
