@@ -137,7 +137,7 @@ class Dolphin::Setup < Dolphin::Base
         # handle gems
         gem install bundler specific_install
         # debugging tools
-        gem install letters did_you_mean
+        gem install letters
         # pry
         gem install pry pry-rescue pry-stack_explorer hirb
         # CLI / deploy
