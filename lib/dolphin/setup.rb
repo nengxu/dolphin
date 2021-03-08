@@ -84,12 +84,12 @@ class Dolphin::Setup < Dolphin::Base
   end
 
   desc "ruby", "install ruby, arg: version"
-  def ruby(version="ruby")
+  def ruby(version, brand='ruby')
     menu = [
       "
         # install ruby
         # sudo /usr/local/bin/ruby-install #{version}
-        /usr/local/bin/ruby-install #{version}
+        /usr/local/bin/ruby-install #{brand} #{version}
       ",
     ]
 
@@ -108,6 +108,7 @@ class Dolphin::Setup < Dolphin::Base
       ",
     ]
 
+    # gem uninstall -aIx
     execute menu
   end
 
